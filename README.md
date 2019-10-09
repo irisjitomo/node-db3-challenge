@@ -19,26 +19,45 @@ For this lab you will
 Visit [SQL Try Editor at W3Schools.com](https://www.w3schools.com/Sql/tryit.asp?filename=trysql_select_top) using the **Google Chrome (or Chromium if you use Linux) browser** and write _SQL queries_ for the following requirements:
 
 - Display the ProductName and CategoryName for all products in the database. Shows 76 records.
+
+SELECT * FROM Products as p
+join categories as c 
+
 - Display the OrderID and ShipperName for all orders placed before January 9, 1997. Shows 161 records.
+
+SELECT OrderID, ShipperName from Orders as O
+JOIN Shippers as S on O.ShipperId = S.ShipperId
+WHERE OrderDate < "1997-01-09";
+
 - Display all ProductNames and Quantities placed on order 10251. Sort by ProductName. Shows 3 records.
+
+SELECT p.productname, o.quantity FROM [Products] as p
+join orderDetails as o on o.productid = p.productid
+where orderid = '10251'
+
 - Display the OrderID, CustomerName and the employee's LastName for every order. All columns should be labeled clearly. Displays 196 records.
+
+SELECT o.orderId, c.customername, e.lastname FROM [Customers] as c
+join orders as o on c.customerid = o.customerid
+join employees as e on o.employeeid = e.employeeid
+
 
 ### Database Methods
 
 Write helpers methods in `./schemes/scheme-model.js` that match the following specifications:
 
-- `find()`:
+<!-- - `find()`:
   - Calling find returns a promise that resolves to an array of all schemes in the database.
-  - No steps are included.
-- `findById(id)`:
+  - No steps are included. -->
+<!-- - `findById(id)`:
   - Expects a scheme `id` as its only parameter.
   - Resolve to a single scheme object.
-  - On an invalid `id`, resolves to `null`.
-- `findSteps(id)`:
+  - On an invalid `id`, resolves to `null`. -->
+<!-- - `findSteps(id)`:
   - Expects a scheme `id`.
   - Resolves to an array of all correctly ordered step for the given scheme: `[ { id: 17, scheme_name: 'Find the Holy Grail', step_number: 1, instructions: 'quest'}, { id: 18, scheme_name: 'Find the Holy Grail', step_number: 2, instructions: '...and quest'}, etc. ]`.
-  - This array should include the `scheme_name` _not_ the `scheme_id`.
-- `add(scheme)`:
+  - This array should include the `scheme_name` _not_ the `scheme_id`. -->
+<!-- - `add(scheme)`:
   - Expects a scheme object.
   - Inserts scheme into the database.
   - Resolves to the newly inserted scheme, including `id`.
@@ -50,7 +69,7 @@ Write helpers methods in `./schemes/scheme-model.js` that match the following sp
   - Removes the scheme object with the provided id.
   - Resolves to the removed scheme
   - Resolves to `null` on an invalid id.
-  - (Hint: Only worry about removing the `scheme`. The database is configured to automatically remove all associated steps.)
+  - (Hint: Only worry about removing the `scheme`. The database is configured to automatically remove all associated steps.) -->
 
 #### Schemes Schema
 
