@@ -1,10 +1,10 @@
 // const schemesDb = require('../data/seeds/01-schemes');
 // const stepsDb = require('../data/seeds/02-steps');
 // const express = require('express')
-const knex = require('knex');
-const knexConfig = require('../knexfile')
+// const knex = require('knex');
+// const knexConfig = require('../knexfile')
 
-const db = knex(knexConfig.development)
+const db = require('../data/db-config')
 
 
 module.exports = {
